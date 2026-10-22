@@ -1,40 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CampusFind
 
-test
+CampusFind helps students reunite with lost belongings. It is a small,
+beginner-friendly, open-source campus lost-and-found project built with Next.js,
+TypeScript, and Tailwind CSS.
 
-## Getting Started
+The current version is a frontend scaffold with local sample reports. It has no
+backend, authentication, database, or external service integrations.
 
-First, run the development server:
+## Prerequisites
+
+- Node.js 20.9 or newer
+- npm
+- Git
+
+## Run locally
 
 ```bash
+git clone https://github.com/adjgamingworld/campusfind.git
+cd campusfind
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser. The page
+updates as you edit the source.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Before opening a pull request, run the checks:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint
+npm run build
+```
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
+- `app/page.tsx` composes the homepage and shared page sections.
+- `app/components/site-header.tsx` contains the shared site navigation.
+- `app/components/item-card.tsx` renders a sample item report.
+- `app/lib/items.ts` contains the item types and local mock data.
+- `app/globals.css` contains the responsive design and global styles.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Keep sample data separate from UI components. As the project grows, add new
+features in focused components and routes instead of combining data, behavior,
+and presentation in one page.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Contributing
 
-## Deploy on Vercel
+CampusFind is designed as a small team project with approachable, independent
+pull requests. Start by checking the repository's GitHub Issues for an open
+task, or open an issue to discuss a change before starting larger work.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Suggested first features (not implemented in this scaffold):
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Build a browse-items experience around the reusable item card.
+2. Add search and category filters to the browse experience.
+3. Create a lost/found report form with accessible validation.
+4. Add item details and a claim/return status flow.
 
-CampusFind helps students reunite with lost belongings.
+For a contribution:
+
+1. Choose or discuss an issue so work does not overlap.
+2. Create a focused branch from `main`, for example
+   `feat/item-search` or `fix/card-layout`.
+3. Make a small change that matches the existing component and TypeScript
+   patterns.
+4. Run `npm run lint` and `npm run build`.
+5. Open a pull request describing the change and how it was checked.
+
+Do not commit `.env` files, credentials, or real students' personal information.
+Keep reports and contact details as mock data until a privacy-conscious backend
+has been designed.

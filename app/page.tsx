@@ -1,69 +1,165 @@
-import Image from "next/image";
+import {
+  ArrowDown,
+  ArrowRight,
+  HeartHandshake,
+  MapPin,
+  PackageOpen,
+  Sparkles,
+  UsersRound,
+} from "lucide-react";
+import { ItemCard } from "./components/item-card";
+import { SiteHeader } from "./components/site-header";
+import { items } from "./lib/items";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <>
+      <SiteHeader />
+      <main>
+        <section className="hero">
+          <div className="hero-inner page-shell">
+            <div className="hero-copy">
+              <p className="eyebrow">
+                <Sparkles aria-hidden="true" size={15} />
+                Your campus, a little more connected
+              </p>
+              <h1>
+                Lost something?
+                <br />
+                <span>Let’s find its way home.</span>
+              </h1>
+              <p className="hero-description">
+                CampusFind brings lost and found reports together, so the things
+                that matter can make their way back to you.
+              </p>
+              <div className="hero-actions">
+                <a className="button button-primary" href="#recent-reports">
+                  Browse recent reports
+                  <ArrowRight aria-hidden="true" size={17} />
+                </a>
+                <a className="text-link" href="#contribute">
+                  How it works
+                  <ArrowDown aria-hidden="true" size={15} />
+                </a>
+              </div>
+              <div className="hero-note">
+                <span className="hero-note-icon" aria-hidden="true">
+                  <UsersRound size={20} />
+                </span>
+                <p>
+                  A small campus community
+                  <br />
+                  helping each other out.
+                </p>
+              </div>
+            </div>
+
+            <div
+              className="hero-art"
+              role="img"
+              aria-label={`Sample ${items[0].status.toLowerCase()} item report: ${items[0].name} at ${items[0].location}`}
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+              <div className="art-sun" />
+              <div className="art-orbit art-orbit-one" />
+              <div className="art-orbit art-orbit-two" />
+              <div className="art-leaf art-leaf-one" />
+              <div className="art-leaf art-leaf-two" />
+              <div className="hero-pin">
+                <MapPin aria-hidden="true" size={27} strokeWidth={2.3} />
+              </div>
+              <div className="hero-report">
+                <div className="report-icon">
+                  <PackageOpen aria-hidden="true" size={39} strokeWidth={1.7} />
+                </div>
+                <div className="report-content">
+                  <span
+                    className={`status-pill status-${items[0].status.toLowerCase()}`}
+                  >
+                    {items[0].status}
+                  </span>
+                  <h2>{items[0].name}</h2>
+                  <p>
+                    <MapPin aria-hidden="true" size={13} />
+                    {items[0].location}
+                  </p>
+                </div>
+                <div className="report-sparkle" aria-hidden="true">
+                  <HeartHandshake size={19} />
+                </div>
+              </div>
+              <p className="art-caption">One kind find can make someone’s day.</p>
+            </div>
+          </div>
+          <div className="hero-bottom page-shell">
+            <span>MADE FOR CAMPUS LIFE</span>
+            <span className="hero-bottom-line" />
+            <span>GOOD THINGS FIND THEIR WAY BACK</span>
+          </div>
+        </section>
+
+        <section className="reports-section page-shell" id="recent-reports">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow eyebrow-muted">A helping hand starts here</p>
+              <h2>Recent campus finds</h2>
+              <p className="section-description">
+                A few things recently reported by students around campus.
+              </p>
+            </div>
+            <a className="section-link" href="#contribute">
+              Help build the browse page
+              <ArrowRight aria-hidden="true" size={16} />
+            </a>
+          </div>
+
+          <div className="item-grid">
+            {items.map((item) => (
+              <ItemCard item={item} key={item.id} />
+            ))}
+          </div>
+          <p className="mock-data-note">
+            These are sample reports — no real items or students are shown.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+        </section>
+
+        <section className="community-section" id="contribute">
+          <div className="community-inner page-shell">
+            <div className="community-icon">
+              <HeartHandshake aria-hidden="true" size={26} />
+            </div>
+            <div className="community-copy">
+              <p className="eyebrow eyebrow-light">Built together, for campus</p>
+              <h2>There’s room for your next good idea.</h2>
+              <p>
+                CampusFind is an open-source student project. The full browse
+                experience, search, report form, and item details are upcoming
+                features for contributors to build.
+              </p>
+            </div>
+            <a
+              className="button button-light"
+              href="https://github.com/adjgamingworld/campusfind"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Explore the project
+              <ArrowRight aria-hidden="true" size={17} />
+            </a>
+          </div>
+        </section>
       </main>
-    </div>
+      <footer className="site-footer page-shell">
+        <a className="brand footer-brand" href="#" aria-label="CampusFind home">
+          <span className="brand-mark" aria-hidden="true">
+            <MapPin size={18} strokeWidth={2.4} />
+          </span>
+          <span>Campus<span className="brand-accent">Find</span></span>
+        </a>
+        <p>Good things find their way back.</p>
+        <a href="https://github.com/adjgamingworld/campusfind">
+          Open source, made on campus
+        </a>
+      </footer>
+    </>
   );
 }
