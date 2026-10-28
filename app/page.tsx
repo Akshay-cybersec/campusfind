@@ -8,6 +8,7 @@ import {
   UsersRound,
 } from "lucide-react";
 import { ItemListing } from "./components/item-listing";
+import { ReportExperience } from "./components/report-experience";
 import { SiteHeader } from "./components/site-header";
 import { items } from "./lib/items";
 
@@ -108,6 +109,8 @@ export default function Home() {
             </div>
             <a className="section-link" href="#contribute">
               Help shape what’s next
+            <a className="section-link" href="#report-item">
+              Report an item
               <ArrowRight aria-hidden="true" size={16} />
             </a>
           </div>
@@ -116,6 +119,7 @@ export default function Home() {
           <p className="mock-data-note">
             These are sample reports — no real items or students are shown.
           </p>
+          <ReportExperience />
         </section>
 
         <section className="community-section" id="contribute">
