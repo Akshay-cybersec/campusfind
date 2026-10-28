@@ -7,7 +7,8 @@ import {
   Sparkles,
   UsersRound,
 } from "lucide-react";
-import { ItemCard } from "./components/item-card";
+import { ItemListing } from "./components/item-listing";
+import { ReportExperience } from "./components/report-experience";
 import { SiteHeader } from "./components/site-header";
 import { items } from "./lib/items";
 
@@ -108,18 +109,24 @@ export default function Home() {
             </div>
             <a className="section-link" href="#contribute">
               Explore the project
+              <h2>Recent campus reports</h2>
+              <p className="section-description">
+                Search and filter items reported by students around campus.
+              </p>
+            </div>
+            <a className="section-link" href="#contribute">
+              Help shape what’s next
+            <a className="section-link" href="#report-item">
+              Report an item
               <ArrowRight aria-hidden="true" size={16} />
             </a>
           </div>
 
-          <div className="item-grid">
-            {items.map((item) => (
-              <ItemCard item={item} key={item.id} />
-            ))}
-          </div>
+          <ItemListing items={items} />
           <p className="mock-data-note">
             These are sample reports — no real items or students are shown.
           </p>
+          <ReportExperience />
         </section>
 
         <section className="community-section" id="contribute">
@@ -131,7 +138,9 @@ export default function Home() {
               <p className="eyebrow eyebrow-light">Built together, for campus</p>
               <h2>There’s room for your next good idea.</h2>
               <p>
-                CampusFind is an open-source student project. Search, report submission, and item details are upcoming features for contributors to build.
+                CampusFind is an open-source student project. Browse, search,
+                and category filters are ready to use; the report form and item
+                details are open for contributors to build.
               </p>
             </div>
             <a
