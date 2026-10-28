@@ -102,6 +102,13 @@ export default function Home() {
           <div className="section-heading">
             <div>
               <p className="eyebrow eyebrow-muted">A helping hand starts here</p>
+              <h2>Browse lost & found items</h2>
+              <p className="section-description">
+                Browse all {items.length} sample reports from around campus.
+              </p>
+            </div>
+            <a className="section-link" href="#contribute">
+              Explore the project
               <h2>Recent campus reports</h2>
               <p className="section-description">
                 Search and filter items reported by students around campus.
